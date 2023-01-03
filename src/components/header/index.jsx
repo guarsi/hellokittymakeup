@@ -9,8 +9,8 @@ const Header = ({ onHandlerCart, user}) => {
         <div className="header-menu">
             <div className="header-menu-logo">
             <Link to='/' className='link-logo'><h2 className="header-logo"><img src="https://www.picgifs.com/emoticons/smileys-and-emoticons/hello-kitty/smileys-hello-kitty-692466.gif" border="0" /></h2></Link>
+                </div>
                 
-            </div>
             <div className="header-menu-cart">
                 </div>
                 <div onClick={onHandlerCart}>

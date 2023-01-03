@@ -5,12 +5,28 @@ import { PRODUCTS } from '../../constants/data/products';
 import { Card, Progress} from '../../components'
 
 
-const Home = () => {
+const Home = ({categoria = 0}) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const navigate = useNavigate();
   const onHandlerSelect = (product) => {  
     navigate(`/product/${product.id}`, { state: product})
   }
+
+
+  let lista = []
+if (categoria == 0) { 
+  lista= PRODUCTS 
+}
+else{
+  PRODUCTS.forEach((p) => {
+    console.log("categoria del producto", p.categoryId)
+  if(p.categoryId == categoria){
+    lista.push(p)
+  }
+  })
+
+}
+console.log("listafiltrada",lista)
 
   useEffect(() => {
     const getDocHeight = () => {
@@ -46,7 +62,7 @@ const Home = () => {
       <Progress scroll={scrollPosition}/>
       <h1>Productos destacados</h1>
         <div className='products-container'>
-        {PRODUCTS.map((product) => (
+        {lista.map((product) => (
           <Card product={product} key={product.id} onSelect={onHandlerSelect}/>
         ))}
       </div>
